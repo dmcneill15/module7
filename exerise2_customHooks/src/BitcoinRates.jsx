@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useData } from "../hooks/useData";
+import { useDataReduced } from "../hooks/useData";
 
 const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD'];
 
@@ -8,7 +9,7 @@ export function BitcoinRates() {
     const [bitCoinPrice, setBitCoinPrice] = useState(0);
 
     
-    const data = useData('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=' + currency.toLowerCase());    
+    const {loading, data, error} = useDataReduced('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=' + currency.toLowerCase());    
 
     //just doing this will cause an infinte loop. State is being updated in the render method. Rather put it in a useEffect so that it is only updated on changes of the url
     //get the bitcoin price out of the data
@@ -16,9 +17,8 @@ export function BitcoinRates() {
         setBitCoinPrice(data.bitcoin[currency.toLowerCase()]);
     }
 */
-
     useEffect(()=>{
-        if(data){
+        if(data && data.bitcoin){
             setBitCoinPrice(data.bitcoin[currency.toLowerCase()]);
         };
     }, [currency, data]);
