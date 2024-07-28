@@ -1,34 +1,30 @@
 import { useState } from "react";
+import {EmojiProvider, useEmojiContext} from '../context/EmojiContext';
 
 export function UpdateEmoji() {
 
-    const [emoji, setEmoji] = useState('😊');
+    // destructure the context values passed via useEmojiContext
+    const{currentEmoji, handleUpdateEmoji} = useEmojiContext();
 
-    //happy
-    //sad
-    //inLove
-
-    const changeMood = () => {
-        let newEmoji = emoji;
-        if (emoji == '😊')
+    const handleMoodChange = () => {
+        let newEmoji = currentEmoji;
+        if (currentEmoji == '😊')
             newEmoji = '☹';
-        else if (emoji == '☹')
+        else if (currentEmoji == '☹')
             newEmoji = '😍';
-        else if (emoji == '😍')
+        else if (currentEmoji == '😍')
             newEmoji = '😊';
 
-        setEmoji(newEmoji);
+        handleUpdateEmoji(newEmoji);
     }
 
     return (
         <div className="emojiChanger">
             <div>
-            <span role="img" aria-label="happy" style={{fontSize: '50px'}}>{emoji}</span>
+            <span role="img" aria-label="happy" style={{fontSize: '50px'}}>{currentEmoji}</span>
             </div><br></br>
 
-            <button onClick={changeMood}>Change Mood</button>
+            <button onClick={handleMoodChange}>Change Mood</button>
         </div>
     )
 }
-
-//note: in react, the style attribute needs to be an object and is written slightly differently to vanilla css: style={{fontSize: '30px'}} instead of style="font-size:30px;"
