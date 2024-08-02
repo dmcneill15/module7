@@ -7,7 +7,7 @@ export function UpdateEmoji() {
     const{currentEmoji, handleUpdateEmoji} = useEmojiContext();
 
     //would you do the actual setting of the emoji's in the context or in this component like it is?
-    //could keep it here to keep the context focused on updating the state and keep the updateEmoji component
+    //would keep it here to keep the context focused on updating the state and keep the updateEmoji component
     //focussed on changing the emojis
     const handleMoodChange = () => {
         let newEmoji = currentEmoji;
