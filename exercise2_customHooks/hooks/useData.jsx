@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from 'axios' // first do 'npm install axios' - alternative to fetch
-import { useReducer } from "react";
 
+//custom Hook #1- without Reducer
 export function useData(url) {
     const [data, setData] = useState(null);
 
@@ -39,44 +38,4 @@ export function useData(url) {
     */
 }
 
-function reducer(dataResults, action) {
-    switch (action.type) {
-        case 'FETCH_SUCCESS':
-            return { loading: false, data: action.payload, error: '' }
-        case 'FETCH_ERROR':
-            return { loading: false, data: [], error: action.payload }
-        default:
-            return { ...dataResults, loading: false }
-    }
-}
-
-export function useDataReduced(url) {
-    //const [data, setData] = useState(null);
-
-    const [dataResults, dispatch] = useReducer(reducer, {
-        loading: true,
-        data: [],
-        error: ''
-    });
-
-    useEffect(() => {
-        if (url) {
-            let ignore = false; //flag used to ignore fetch results
-
-            axios.get(url)
-                .then(response => {
-                    dispatch({ type: "FETCH_SUCCESS", payload: response.data })
-                })
-                .catch(error => {
-                    dispatch({ type: "FETCH_ERROR", payload: error.message })
-                })
-            //cleanup function to run when unmounted or when currency changes
-            return () => {
-                ignore = true;  //ignore the fetch results because they are now invalid
-            }
-        }
-    }, [url]);
-
-    return dataResults;    //return the fetched data
-}
 
