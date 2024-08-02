@@ -1,6 +1,10 @@
+/*why would you use reducer?
+- simplifying complex state updates - when there are multiple states possible
+- managing forms & inputs, similarly authentication when there are a few variables to check and update state
+*/
 import { useState, useReducer } from "react";
 
-    // reducer function - can be called anything
+// reducer function - can be called anything
 // takes two arguments: the current state, and the action to be taken
 // action is passed via dispatch, state is stored in component
 const reducer = (state, action) => {

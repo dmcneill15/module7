@@ -6,6 +6,8 @@ export function BitcoinRates() {
     const [currency, setCurrency] = useState(currencies[0]);
     const [bitCoinPrice, setBitCoinPrice] = useState(0);
 
+    //useful to run code on every render of a component
+    //runs on startup and then everytime data changes
     useEffect(()=>{
         let ignore = false; //flag used to ignore fetch results that are no longer valid
         
