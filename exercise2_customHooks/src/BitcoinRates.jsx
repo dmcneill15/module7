@@ -11,8 +11,6 @@ export function BitcoinRates() {
     //useDataReduced will be called on any state change of currency
     const {data, error} = useDataReduced('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=' + currency.toLowerCase());    
 
-    //const {loading, data, error}
-
     //changes in the data (once useDataReduced fetch is completed), will trigger useEffect
     useEffect(()=>{
         if(data && data.bitcoin){

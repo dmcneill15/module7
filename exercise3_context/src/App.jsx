@@ -6,7 +6,6 @@ import { UpdateEmoji } from './UpdateEmoji.jsx'
 import {EmojiProvider} from '../context/EmojiContext.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

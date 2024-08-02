@@ -3,7 +3,7 @@ import {EmojiProvider, useEmojiContext} from '../context/EmojiContext';
 
 export function UpdateEmoji() {
 
-    // destructure the context values passed via useEmojiContext
+    // destructure the context values passed via useEmojiContext custom hook
     const{currentEmoji, handleUpdateEmoji} = useEmojiContext();
 
     const handleMoodChange = () => {

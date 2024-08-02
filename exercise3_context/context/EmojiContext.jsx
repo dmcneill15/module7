@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useContext } from "react";
 
+//1. Create context
 const EmojiContext = React.createContext();
 
 // Custom provider component for this context.
@@ -17,7 +18,7 @@ export const EmojiProvider = (props) => {
     // 2. Provide the context.
     // The Provider component of any context (UserContext.Provider)
     // sends data via its value prop to all children at every level.
-    // We are sending both the current user and an update function
+    // We are sending both the current emoji and an update function
     return (
         <EmojiContext.Provider value={{ currentEmoji, handleUpdateEmoji }}>
             {props.children}
@@ -30,5 +31,3 @@ export const EmojiProvider = (props) => {
 export const useEmojiContext = () => {
     return useContext(EmojiContext);
 }
-
-// Save as UserContext.jsx in a separate 'context' folder
