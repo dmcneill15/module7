@@ -1,5 +1,5 @@
 # React Routes
-### To run:
+### Install dependencies:
 ```bash
     npm install
 ```
