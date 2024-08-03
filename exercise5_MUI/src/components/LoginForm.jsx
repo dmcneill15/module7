@@ -57,6 +57,7 @@ export function LoginForm() {
                                 onChange={(e) => setUserEmail(e.target.value)} />
                             <TextField id="outlined-basic" label="Password" variant="outlined" type="password" value={userPassword} name="password"
                                 onChange={(e) => setUserPassword(e.target.value)} />
+                                <br /><br />
                             <Button variant="contained" type="submit">Log In</Button>
                             <p>{submitResult}</p>
                         </form>
