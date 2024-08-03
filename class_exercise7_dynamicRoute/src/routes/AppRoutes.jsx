@@ -5,6 +5,7 @@ import BitcoinRatesPage from "../pages/BitconRatesPage";
 import PageNotFound from "../pages/PageNotFound"
 import PostsPage from "../pages/PostPage";
 import { PostList, Post } from "../pages/PostPage";
+import ProtectedRoute from "./ProtectedRoutes";
 
 function AppRoutes(props) {
 
@@ -17,7 +18,7 @@ function AppRoutes(props) {
             {/* route with a specific path: */}
             <Route path='/login' element={<LoginPage {...props} />} />
 
-            <Route path='/bitcoin' element={<BitcoinRatesPage {...props} />} />
+            <Route path='/bitcoin' element={<ProtectedRoute><BitcoinRatesPage {...props} /></ProtectedRoute>} />
 
             {/*Nested route */}
             <Route path='/posts' element={<PostsPage {...props} />}>
