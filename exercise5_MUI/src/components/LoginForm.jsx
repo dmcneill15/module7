@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useUserContext } from "../context/UserContext";
 
+import { TextField, Button } from "@mui/material";
+import { FormControl, Box } from "@mui/material";
+import Stack from '@mui/material/Stack';
+import SendIcon from '@mui/icons-material/Send';
+
 export function LoginForm() {
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -32,22 +37,32 @@ export function LoginForm() {
     // otherwise render same form as previously, no changes
     else return (
         <div className="LoginForm componentBox">
-            <form onSubmit={handleSubmit}>
-                <div className="formRow">
-                    <label>Email Address:
-                        <input type="email" value={userEmail} name="userEmail"
-                            onChange={(e) => setUserEmail(e.target.value)} />
-                    </label>
-                </div>
-                <div className="formRow">
-                    <label>Password:
-                        <input type="password" value={userPassword} name="password"
-                            onChange={(e) => setUserPassword(e.target.value)} />
-                    </label>
-                </div>
-                <button>Log In</button>
-                <p>{submitResult}</p>
-            </form>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}
+            >
+                <Stack component="form"
+                    sx={{
+                        width: '50%',
+                    }}
+                    spacing={2}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <FormControl onSubmit={handleSubmit}>
+                        <form >
+                            <TextField id="outlined-basic" label="Email" variant="outlined" type="email" value={userEmail} name="userEmail"
+                                onChange={(e) => setUserEmail(e.target.value)} />
+                            <TextField id="outlined-basic" label="Password" variant="outlined" type="password" value={userPassword} name="password"
+                                onChange={(e) => setUserPassword(e.target.value)} />
+                            <Button variant="contained" type="submit">Log In</Button>
+                            <p>{submitResult}</p>
+                        </form>
+                    </FormControl>
+                </Stack>
+            </Box>
         </div>
     )
 }

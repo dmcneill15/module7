@@ -9,6 +9,7 @@ export default function NavBar() {
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/login">Login</NavLink></li>
                 <li><NavLink to="/bitcoin">Bitcoin Rates</NavLink></li>
+                <li><NavLink to="/posts">Posts</NavLink></li>
             </ul> 
         </nav>
     )
