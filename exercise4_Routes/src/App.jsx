@@ -5,16 +5,19 @@ import './App.css'
 import AppRoutes from './routes.jsx/AppRoutes'
 import NavBar from './components/NavBar'
 import { EmojiProvider } from './context/EmojiContext'
+import { UserProvider } from './context/UserContext'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <EmojiProvider>
-        <NavBar />
-        <AppRoutes />
-      </EmojiProvider>
+      <UserProvider>
+        <EmojiProvider>
+          <NavBar />
+          <AppRoutes />
+        </EmojiProvider>
+      </UserProvider>
     </>
   )
 }
